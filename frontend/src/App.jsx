@@ -1,19 +1,45 @@
-import { Route, Routes } from "react-router";
+import { Routes, Route } from "react-router";
+import AuthProvider from "./context/AuthProvider";
+import ProtectedRoute from "./components/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import CreatePage from "./pages/CreatePage";
 import NoteDetailPage from "./pages/NoteDetailPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
-const App = () => {
+function App() {
   return (
-    <div className="relative h-full w-full">
-      <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24" />
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreatePage />} />
-        <Route path="/note/:id" element={<NoteDetailPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoute>
+              <CreatePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/note/:id"
+          element={
+            <ProtectedRoute>
+              <NoteDetailPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    </div>
+    </AuthProvider>
   );
-};
+}
 
 export default App;
