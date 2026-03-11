@@ -1,28 +1,31 @@
 # 🧠 Thinkboard
 
-A full-stack MERN web application for capturing, organizing, and sharing your ideas and thoughts — all in one place.
+A full-stack MERN web application for capturing, organizing, and managing your personal notes — with secure authentication so your thoughts stay private.
 
 ---
 
 ## ✨ Features
 
-- 📝 Create, edit, and delete notes and ideas in real time
-- 🗂️ Organize your thoughts on a clean, intuitive board interface
-- 🔐 User authentication and personal note management
+- 🔐 JWT-based authentication (register, login, logout)
+- 📝 Create, view, edit, and delete your personal notes
+- 🔍 Search and filter notes in real time
+- 🌗 Auto dark/light theme based on system preferences (dim / nord)
+- ⚡ Rate limiting with Upstash Redis
+- 📱 Responsive design across all devices
 - 💾 Persistent data storage with MongoDB
-- 📱 Responsive design that works across devices
-- ⚡ Fast, reactive UI powered by React
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer      | Technology              |
-|------------|-------------------------|
-| Frontend   | React.js                |
-| Backend    | Node.js + Express.js    |
-| Database   | MongoDB + Mongoose      |
-| Styling    | Tailwind CSS + DaisyUI  |
+| Layer      | Technology                        |
+|------------|-----------------------------------|
+| Frontend   | React.js + Vite                   |
+| Backend    | Node.js + Express.js              |
+| Database   | MongoDB + Mongoose                |
+| Auth       | JWT + bcryptjs                    |
+| Styling    | Tailwind CSS + DaisyUI            |
+| Rate Limit | Upstash Redis                     |
 
 ---
 
@@ -30,16 +33,14 @@ A full-stack MERN web application for capturing, organizing, and sharing your id
 
 ### Prerequisites
 
-Make sure you have the following installed:
-
 - [Node.js](https://nodejs.org/) (v16 or higher)
 - [npm](https://www.npmjs.com/)
-- A MongoDB instance — local or via [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- A MongoDB instance via [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- An [Upstash](https://upstash.com/) Redis database
 
 ---
 
 ### 1. Clone the Repository
-
 ```bash
 git clone https://github.com/harshita-aggarwal/Thinkboard.git
 cd Thinkboard
@@ -48,23 +49,21 @@ cd Thinkboard
 ---
 
 ### 2. Set Up the Backend
-
 ```bash
 cd backend
 npm install
 ```
 
 Create a `.env` file inside the `backend` directory:
-
 ```env
 PORT=5001
-MONGO_URI=your_mongodb_connection_string
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
 UPSTASH_REDIS_REST_URL=your_upstash_redis_url
-UPSTASH_REDIS_REST_TOKEN:your_redis_secret_token
+UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_token
 ```
 
 Start the backend server:
-
 ```bash
 npm run dev
 ```
@@ -74,11 +73,10 @@ The backend will run on `http://localhost:5001`.
 ---
 
 ### 3. Set Up the Frontend
-
 ```bash
 cd ../frontend
 npm install
-npm start
+npm run dev
 ```
 
 The frontend will run on `http://localhost:5173`.
@@ -87,7 +85,7 @@ The frontend will run on `http://localhost:5173`.
 
 ### 4. You're all set! 🎉
 
-Open `http://localhost:5173` in your browser to start using Thinkboard.
+Open `http://localhost:5173` in your browser, register an account, and start noting!
 
 ---
 
