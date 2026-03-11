@@ -14,7 +14,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://thinkboard-y246.onrender.com",
   }),
 );
 app.use(express.json());
