@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5001/api",
+  baseURL: "https://thinkboard-backend-789a.onrender.com",
 });
 
 api.interceptors.request.use((config) => {
