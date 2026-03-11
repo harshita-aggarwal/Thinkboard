@@ -57,9 +57,10 @@ npm install
 Create a `.env` file inside the `backend` directory:
 
 ```env
-PORT=5000
+PORT=5001
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+UPSTASH_REDIS_REST_URL=your_upstash_redis_url
+UPSTASH_REDIS_REST_TOKEN:your_redis_secret_token
 ```
 
 Start the backend server:
@@ -68,7 +69,7 @@ Start the backend server:
 npm run dev
 ```
 
-The backend will run on `http://localhost:5000`.
+The backend will run on `http://localhost:5001`.
 
 ---
 
@@ -80,13 +81,13 @@ npm install
 npm start
 ```
 
-The frontend will run on `http://localhost:3000`.
+The frontend will run on `http://localhost:5173`.
 
 ---
 
 ### 4. You're all set! 🎉
 
-Open `http://localhost:3000` in your browser to start using Thinkboard.
+Open `http://localhost:5173` in your browser to start using Thinkboard.
 
 ---
 
